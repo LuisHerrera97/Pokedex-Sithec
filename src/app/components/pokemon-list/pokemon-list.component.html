@@ -1,0 +1,8 @@
+<mat-card *ngFor="let pokemon of pokemons">
+    <mat-card-title>{{ pokemon.name }}</mat-card-title>
+    <mat-card-subtitle>{{ pokemon.url }}</mat-card-subtitle>
+    <button mat-button (click)="viewDetails(pokemon.url)">View Details</button>
+    <button mat-icon-button (click)="addToFavorites(pokemon)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+</mat-card>

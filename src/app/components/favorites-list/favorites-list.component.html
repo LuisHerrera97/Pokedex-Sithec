@@ -1,0 +1,7 @@
+<mat-card *ngFor="let favorite of favoritePokemons">
+    <mat-card-title>{{ favorite.name }}</mat-card-title>
+    <mat-card-subtitle>{{ favorite.url }}</mat-card-subtitle>
+    <button mat-icon-button (click)="removeFromFavorites(favorite)">
+      <mat-icon>delete</mat-icon>
+    </button>
+</mat-card>
