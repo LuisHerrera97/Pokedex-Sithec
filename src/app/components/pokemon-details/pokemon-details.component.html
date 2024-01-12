@@ -1,9 +1,0 @@
-<mat-card>
-    <mat-card-title>{{ pokemonDetails.name }}</mat-card-title>
-    <mat-card-content>
-      <img [src]="pokemonDetails.sprites.front_default" alt="Pokemon Image">
-      <p>Abilities: {{ pokemonDetails.abilities.map(a => a.ability.name).join(', ') }}</p>
-      <p>Games: {{ pokemonDetails.game_indices.map(g => g.version.name).join(', ') }}</p>
-      <!-- Otras propiedades según necesidad -->
-    </mat-card-content>
-</mat-card>

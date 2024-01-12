@@ -1,0 +1,50 @@
+<mat-card class="example-card" *ngIf="view==2">
+    <mat-card-header>
+        
+        <mat-card-title>
+            <a class="circle-link" title="Find a Local Meetup"  (click)="setView(1)" rel="noopener" style="float: right;">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+            <h3>{{single.name}}</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image  [src]="single.sprites.front_default" style="width: 200px;" />
+    <mat-card-actions>
+      <button mat-button *ngIf="!single.favorite" (click)="saveNewFavorite()"><mat-icon>favorite_border</mat-icon></button>
+      <button mat-button *ngIf="single.favorite" ><mat-icon>favorite</mat-icon></button>
+      <button mat-button *ngIf="single.favorite" (click)="deleteNewFovorite()"><mat-icon>delete_forever</mat-icon></button>
+    </mat-card-actions>
+    <mat-card-content>
+        <h4>Habilidades</h4>
+        <ul>
+            <li *ngFor="let item of single.abilities">{{item.ability.name}}</li>
+        </ul>
+        <h4>Juegos donde ha estado</h4>
+        <ul>
+            <li *ngFor="let item of single.game_indices">{{item.version.name}}</li>
+        </ul>
+    </mat-card-content>
+  </mat-card>
+<div *ngIf="view==1">
+    <label>Limite</label>
+    <select [(ngModel)]="limit" name="food" (change)="getList()">
+        <option *ngFor="let item of limits" [value]="item">{{item}}</option>
+    </select>
+  </div>
+<div class="card-container" *ngIf="view==1">
+    <a *ngFor="let item of data.results" class="card" target="_blank" rel="noopener" (click)="getDetails(item.url)">
+        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+        <span>{{item.name}}</span>
+    </a>
+</div>
+
+
+<div class="card-container" *ngIf="view==1">
+    <a class="circle-link" title="Find a Local Meetup" *ngIf="data.previous!=null" (click)="getListByUrl(data.previous)" target="_blank" rel="noopener">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </a>
+
+    <a class="circle-link" title="Join the Conversation on Discord" *ngIf="data.next!=null" (click)="getListByUrl(data.next)" target="_blank" rel="noopener">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </a>
+  </div>
